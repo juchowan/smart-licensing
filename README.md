@@ -1,23 +1,24 @@
 <!-- BEGIN_TF_DOCS -->
 [![Tests](https://github.com/netascode/terraform-aci-scaffolding/actions/workflows/test.yml/badge.svg)](https://github.com/netascode/terraform-aci-scaffolding/actions/workflows/test.yml)
 
-# Terraform ACI Scaffolding Module
+# Terraform ACI Smart Licensing Module
 
 Description
 
 Location in GUI:
-`Tenants` » `XXX`
+`System` » `Smart Licensing`
 
 ## Examples
 
 ```hcl
-module "aci_scaffolding" {
-  source  = "netascode/scaffolding/aci"
+module "aci_smart" {
+  source  = "netascode/smart-licensing/aci"
   version = ">= 0.0.1"
 
-  name        = "ABC"
-  alias       = "ABC-ALIAS"
-  description = "My Description"
+  mode              = "proxy"
+  reg_token_id      = "ABCDEFG"
+  proxy_hostname_ip = "a.proxy.com"
+  proxy_port        = "80"
 }
 ```
 
@@ -38,20 +39,21 @@ module "aci_scaffolding" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_name"></a> [name](#input\_name) | Tenant name. | `string` | n/a | yes |
-| <a name="input_alias"></a> [alias](#input\_alias) | Tenant alias. | `string` | `""` | no |
-| <a name="input_description"></a> [description](#input\_description) | Tenant description. | `string` | `""` | no |
+| <a name="input_proxy_hostname_ip"></a> [proxy\_hostname\_ip](#input\_proxy\_hostname\_ip) | Proxy Hostname or IP Address | `string` | n/a | yes |
+| <a name="input_proxy_port"></a> [proxy\_port](#input\_proxy\_port) | Proxy port | `string` | `"443"` | no |
+| <a name="input_mode"></a> [mode](#input\_mode) | Mode | `string` | `"smart-licensing"` | no |
+| <a name="input_reg_token_id"></a> [reg\_token\_id](#input\_reg\_token\_id) | Registration token ID | `string` | n/a | yes |
+| <a name="input_url"></a> [url](#input\_url) | URL | `string` | `"https://tools.cisco.com/its/service/oddce/services/DDCEService"` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| <a name="output_dn"></a> [dn](#output\_dn) | Distinguished name of `fvTenant` object. |
-| <a name="output_name"></a> [name](#output\_name) | Tenant name. |
+| <a name="output_dn"></a> [dn](#output\_dn) | Distinguished name of `licenseLicPolicy` object. |
 
 ## Resources
 
 | Name | Type |
 |------|------|
-| [aci_rest_managed.fvTenant](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest_managed) | resource |
+| [aci_rest_managed.licenseLicPolicy](https://registry.terraform.io/providers/CiscoDevNet/aci/latest/docs/resources/rest_managed) | resource |
 <!-- END_TF_DOCS -->

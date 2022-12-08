@@ -1,31 +1,42 @@
-variable "name" {
-  description = "Tenant name."
+variable "proxy_hostname_ip" {
+  description = "Proxy Hostname or IP Address"
   type        = string
 
   validation {
-    condition     = can(regex("^[a-zA-Z0-9_.-]{0,64}$", var.name))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `_`, `.`, `-`. Maximum characters: 64."
+    condition     = can(regex("^[a-zA-Z0-9:][a-zA-Z0-9.:-]{0,254}$", var.proxy_hostname_ip))
+    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `.`, `:`, `-`. Maximum characters: 254."
   }
 }
 
-variable "alias" {
-  description = "Tenant alias."
+variable "proxy_port" {
+  description = "Proxy port"
   type        = string
-  default     = ""
+  default     = "443"
 
   validation {
-    condition     = can(regex("^[a-zA-Z0-9_.-]{0,64}$", var.alias))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `_`, `.`, `-`. Maximum characters: 64."
+    condition     = try(tonumber(var.proxy_port) >= 0 && tonumber(var.proxy_port) <= 65535, false)
+    error_message = "Allowed value is number between 0 and 65535."
   }
 }
 
-variable "description" {
-  description = "Tenant description."
+variable "mode" {
+  description = "Mode"
   type        = string
-  default     = ""
+  default     = "smart-licensing"
 
   validation {
-    condition     = can(regex("^[a-zA-Z0-9\\!#$%()*,-./:;@ _{|}~?&+]{0,128}$", var.description))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `\\`, `!`, `#`, `$`, `%`, `(`, `)`, `*`, `,`, `-`, `.`, `/`, `:`, `;`, `@`, ` `, `_`, `{`, `|`, }`, `~`, `?`, `&`, `+`. Maximum characters: 128."
+    condition     = contains(["cslu", "smart-licensing", "offline", "plr", "proxy", "satellite", "transport-gateway"], var.mode)
+    error_message = "Allowed values are: 'cslu', 'smart-licensing', 'offline', 'plr', 'proxy', 'satellite', 'transport-gateway'"
   }
+}
+
+variable "reg_token_id" {
+  description = "Registration token ID"
+  type        = string
+}
+
+variable "url" {
+  description = "URL"
+  type        = string
+  default     = "https://tools.cisco.com/its/service/oddce/services/DDCEService"
 }

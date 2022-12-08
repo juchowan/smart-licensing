@@ -1,9 +1,12 @@
-resource "aci_rest_managed" "fvTenant" {
-  dn         = "uni/tn-${var.name}"
-  class_name = "fvTenant"
+resource "aci_rest_managed" "licenseLicPolicy" {
+  dn         = "uni/fabric/licensepol"
+  class_name = "licenseLicPolicy"
   content = {
-    name      = var.name
-    nameAlias = var.alias
-    descr     = var.description
+    ipAddr     = var.proxy_hostname_ip
+    mode       = var.mode
+    port       = var.proxy_port
+    regTokenId = var.reg_token_id
+    url        = var.url
   }
 }
+
