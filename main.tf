@@ -5,7 +5,7 @@ resource "aci_rest_managed" "licenseLicPolicy" {
     ipAddr     = var.proxy_hostname_ip
     mode       = var.mode
     port       = var.proxy_port
-    regTokenId = var.reg_token_id
+    regTokenId = var.registration_token
     url        = var.url
   }
 }

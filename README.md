@@ -15,10 +15,10 @@ module "aci_smart" {
   source  = "netascode/smart-licensing/aci"
   version = ">= 0.0.1"
 
-  mode              = "proxy"
-  reg_token_id      = "ABCDEFG"
-  proxy_hostname_ip = "a.proxy.com"
-  proxy_port        = "80"
+  mode               = "proxy"
+  registration_token = "ABCDEFG"
+  proxy_hostname_ip  = "a.proxy.com"
+  proxy_port         = "80"
 }
 ```
 
@@ -42,7 +42,7 @@ module "aci_smart" {
 | <a name="input_proxy_hostname_ip"></a> [proxy\_hostname\_ip](#input\_proxy\_hostname\_ip) | Proxy Hostname or IP Address | `string` | n/a | yes |
 | <a name="input_proxy_port"></a> [proxy\_port](#input\_proxy\_port) | Proxy port | `string` | `"443"` | no |
 | <a name="input_mode"></a> [mode](#input\_mode) | Mode | `string` | `"smart-licensing"` | no |
-| <a name="input_reg_token_id"></a> [reg\_token\_id](#input\_reg\_token\_id) | Registration token ID | `string` | n/a | yes |
+| <a name="input_registration_token"></a> [registration\_token](#input\_registration\_token) | Registration token ID | `string` | n/a | yes |
 | <a name="input_url"></a> [url](#input\_url) | URL | `string` | `"https://tools.cisco.com/its/service/oddce/services/DDCEService"` | no |
 
 ## Outputs

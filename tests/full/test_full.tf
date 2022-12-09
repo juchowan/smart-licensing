@@ -16,11 +16,11 @@ terraform {
 module "main" {
   source = "../.."
 
-  mode              = "proxy"
-  reg_token_id      = "ABCDEFG"
-  proxy_hostname_ip = "a.proxy.com"
-  proxy_port        = "80"
-  url               = "https://tools.cisco.com/its/service/oddce/services/DDCEService"
+  mode               = "proxy"
+  registration_token = "ABCDEFG"
+  proxy_hostname_ip  = "a.proxy.com"
+  proxy_port         = "80"
+  url                = "https://tools.cisco.com/its/service/oddce/services/DDCEService"
 }
 
 data "aci_rest_managed" "licenseLicPolicy" {

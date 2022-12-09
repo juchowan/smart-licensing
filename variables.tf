@@ -30,7 +30,7 @@ variable "mode" {
   }
 }
 
-variable "reg_token_id" {
+variable "registration_token" {
   description = "Registration token ID"
   type        = string
 }
