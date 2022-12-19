@@ -7,7 +7,7 @@ content: |-
 
   # Terraform ACI Smart Licensing Module
 
-  Description
+  Manages ACI Smart Licensing
 
   Location in GUI:
   `System` » `Smart Licensing`

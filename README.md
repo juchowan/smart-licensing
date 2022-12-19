@@ -3,7 +3,7 @@
 
 # Terraform ACI Smart Licensing Module
 
-Description
+Manages ACI Smart Licensing
 
 Location in GUI:
 `System` » `Smart Licensing`
@@ -11,7 +11,7 @@ Location in GUI:
 ## Examples
 
 ```hcl
-module "aci_smart" {
+module "aci_smart_licensing" {
   source  = "netascode/smart-licensing/aci"
   version = ">= 0.0.1"
 
