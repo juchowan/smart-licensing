@@ -1,6 +1,6 @@
 module "aci_smart_licensing" {
   source  = "netascode/smart-licensing/aci"
-  version = ">= 0.0.1"
+  version = ">= 0.1.0"
 
   mode               = "proxy"
   registration_token = "ABCDEFG"

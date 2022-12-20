@@ -1,9 +1,10 @@
 variable "proxy_hostname_ip" {
   description = "Proxy Hostname or IP Address"
   type        = string
+  default     = ""
 
   validation {
-    condition     = can(regex("^[a-zA-Z0-9:][a-zA-Z0-9.:-]{0,254}$", var.proxy_hostname_ip))
+    condition     = var.proxy_hostname_ip == "" || can(regex("^[a-zA-Z0-9:][a-zA-Z0-9.:-]{0,254}$", var.proxy_hostname_ip))
     error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `.`, `:`, `-`. Maximum characters: 254."
   }
 }
