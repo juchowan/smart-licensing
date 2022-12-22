@@ -9,5 +9,9 @@ resource "aci_rest_managed" "licenseLicPolicy" {
     url           = var.url
     regAdminState = "register"
   }
+
+  lifecycle {
+    ignore_changes = [content["regAdminState"]]
+  }
 }
 
