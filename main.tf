@@ -11,7 +11,7 @@ resource "aci_rest_managed" "licenseLicPolicy" {
   }
 
   lifecycle {
-    ignore_changes = [content["regAdminState"]]
+    ignore_changes = [content["regAdminState"], content["regTokenId"]]
   }
 }
 
