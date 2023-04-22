@@ -4,8 +4,8 @@ variable "proxy_hostname_ip" {
   default     = ""
 
   validation {
-    condition     = var.proxy_hostname_ip == "" || can(regex("^[a-zA-Z0-9:][a-zA-Z0-9.:-]{0,254}$", var.proxy_hostname_ip))
-    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `.`, `:`, `-`. Maximum characters: 254."
+    condition     = var.proxy_hostname_ip == "" || can(regex("^[a-zA-Z0-9:\\[][a-zA-Z0-9.:-\\]]{0,254}$", var.proxy_hostname_ip))
+    error_message = "Allowed characters: `a`-`z`, `A`-`Z`, `0`-`9`, `.`, `:`, `-`, `[`, `]`. Maximum characters: 254."
   }
 }
 
@@ -27,7 +27,7 @@ variable "mode" {
 
   validation {
     condition     = contains(["cslu", "smart-licensing", "offline", "plr", "proxy", "satellite", "transport-gateway"], var.mode)
-    error_message = "Allowed values are: 'cslu', 'smart-licensing', 'offline', 'plr', 'proxy', 'satellite', 'transport-gateway'"
+    error_message = "Allowed values are: `cslu`, `smart-licensing`, `offline`, `plr`, `proxy`, `satellite`, `transport-gateway`"
   }
 }
 
